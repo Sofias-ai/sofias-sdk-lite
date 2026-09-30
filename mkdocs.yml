@@ -1,0 +1,65 @@
+site_name: sofias-sdk-lite
+site_description: Build agents on the Sofias agent graph and run them over RabbitMQ.
+site_url: https://docs.sofias.ai/
+repo_url: https://github.com/Sofias-ai/sofias-sdk-lite
+repo_name: Sofias-ai/sofias-sdk-lite
+copyright: "&copy; Sofias Tech, S.L. &middot; <a href=\"https://sofias.ai/\">sofias.ai</a>"
+
+theme:
+  name: material
+  # System fonts: the default would load fonts from a third-party CDN on every visit.
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Concepts:
+      - Agents and graphs: concepts/agents-and-graphs.md
+      - LLM integration: concepts/llm-integration.md
+      - Errors and retries: concepts/errors-and-retries.md
+  - Messaging:
+      - Overview: messaging/overview.md
+      - Running an agent: messaging/running-an-agent.md
+      - Delegation: messaging/delegation.md
+  - Guides:
+      - Testing your agent: guides/testing-your-agent.md
+  - Reference: reference.md
+
+extra_css:
+  - stylesheets/sofias.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - tables
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_source: false
+            show_root_heading: true
