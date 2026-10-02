@@ -27,7 +27,8 @@ class RabbitMQConsumer:
     The handler receives a :class:`MessageContext` with the deserialized
     payload, AMQP metadata, and ack/nack helpers.
 
-    Example::
+    Example:
+        ```python
 
         async with RabbitMQClient(config) as client:
             consumer = RabbitMQConsumer(
@@ -40,6 +41,7 @@ class RabbitMQConsumer:
                 await asyncio.Event().wait()
             except asyncio.CancelledError:
                 await consumer.stop()
+        ```
     """
 
     def __init__(

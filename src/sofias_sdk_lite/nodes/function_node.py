@@ -63,6 +63,7 @@ class FunctionNode(BaseNode):
                 return {"merged": ...}
 
     Example:
+        ```python
         node = FunctionNode(
             name="transformer",
             contract=NodeContract(input_schema=RawInput, output_schema=FormattedOutput),
@@ -70,6 +71,7 @@ class FunctionNode(BaseNode):
         )
         result = await node.execute({"input": 5})
         # result: {"value": 10}
+        ```
     """
 
     def __init__(

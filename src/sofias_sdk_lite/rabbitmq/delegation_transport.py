@@ -38,6 +38,7 @@ class RabbitMQDelegationTransport:
     - Responses arriving before wait_* are buffered, not lost
 
     Example:
+        ```python
         client = RabbitMQClient(config)
         await client.connect()
 
@@ -65,6 +66,7 @@ class RabbitMQDelegationTransport:
             print(f"{cid} responded with: {response}")
 
         await client.disconnect()
+        ```
     """
 
     def __init__(

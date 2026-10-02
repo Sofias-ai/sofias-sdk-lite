@@ -57,6 +57,7 @@ class FieldValueStrategy:
     outputs where different categories lead to different processing paths.
 
     Example:
+        ```python
         strategy = FieldValueStrategy(
             field="category",
             mapping={"urgent": "priority_handler", "spam": "discard"},
@@ -65,6 +66,7 @@ class FieldValueStrategy:
         # If output["category"] == "urgent" -> "priority_handler"
         # If output["category"] == "spam" -> "discard"
         # If output["category"] == "other" -> "normal_handler" (default)
+        ```
     """
 
     def __init__(
@@ -127,6 +129,7 @@ class ConfidenceThresholdStrategy:
     leads to automated processing and low confidence requires human review.
 
     Example:
+        ```python
         strategy = ConfidenceThresholdStrategy(
             field="confidence",
             threshold=0.8,
@@ -135,6 +138,7 @@ class ConfidenceThresholdStrategy:
         )
         # If output["confidence"] >= 0.8 -> "auto_respond"
         # If output["confidence"] < 0.8 -> "human_review"
+        ```
     """
 
     def __init__(
@@ -199,6 +203,7 @@ class FieldPresenceStrategy:
     "present" if it exists, is not None, and is not empty (for collections).
 
     Example:
+        ```python
         strategy = FieldPresenceStrategy(
             field="tool_calls",
             present="tool_executor",
@@ -206,6 +211,7 @@ class FieldPresenceStrategy:
         )
         # If output["tool_calls"] has content -> "tool_executor"
         # If output["tool_calls"] is None/empty -> "final_response"
+        ```
     """
 
     def __init__(
@@ -270,12 +276,14 @@ class ConditionalStrategy:
     and returns the target node name.
 
     Example:
+        ```python
         def custom_router(output: dict) -> str:
             if output["score"] > 0.9 and output["verified"]:
                 return "premium_handler"
             return "standard_handler"
 
         strategy = ConditionalStrategy(condition=custom_router)
+        ```
     """
 
     def __init__(
@@ -325,12 +333,14 @@ class FanOutStrategy:
     collects the results after all parallel branches complete.
 
     Example:
+        ```python
         strategy = FanOutStrategy(
             targets=["sentiment", "entities", "summary"],
             join_node="merger",
         )
         # Dispatches to all three nodes in parallel.
         # After all complete, execution continues at "merger".
+        ```
     """
 
     def __init__(
@@ -402,6 +412,7 @@ class CompositeStrategy:
     default.
 
     Example:
+        ```python
         strategy = CompositeStrategy(
             strategies=[
                 FieldPresenceStrategy("error", "error_handler", None),
@@ -409,6 +420,7 @@ class CompositeStrategy:
             ],
             default="fallback",
         )
+        ```
     """
 
     def __init__(
@@ -455,8 +467,10 @@ class StaticRoute:
     For conditional routing, use FieldValueStrategy or ConditionalStrategy.
 
     Example:
+        ```python
         strategy = StaticRoute("responder")
         # output is ignored — always returns "responder"
+        ```
     """
 
     def __init__(self, target: str) -> None:

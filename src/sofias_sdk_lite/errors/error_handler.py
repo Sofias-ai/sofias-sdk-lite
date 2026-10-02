@@ -153,12 +153,14 @@ class ErrorHandler:
     callable provided by the agent.
 
     Example:
+        ```python
         handler = ErrorHandler(config=config, store=store)
         result = await handler.handle_node_execution(
             node_name="processor",
             execute_fn=node.execute,
             input_data={"query": "hello"},
         )
+        ```
     """
 
     def __init__(

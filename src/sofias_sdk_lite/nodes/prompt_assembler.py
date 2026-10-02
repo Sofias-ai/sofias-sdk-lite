@@ -33,12 +33,14 @@ class PromptAssembler:
     variables merged with runtime variables (runtime takes precedence).
 
     Example:
+        ```python
         assembler = PromptAssembler(
             config=node_config,
             tools=[tool_spec_1, tool_spec_2],
             output_contract=MyOutputContract,
         )
         prompt = assembler.assemble(runtime_vars={"user_name": "Alice"})
+        ```
     """
 
     def __init__(

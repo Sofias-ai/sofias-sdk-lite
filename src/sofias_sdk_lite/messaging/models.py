@@ -332,6 +332,7 @@ class DelegationTarget(BaseModel):
     the communication with a specific target agent.
 
     Example:
+        ```python
         target = DelegationTarget(
             agent_name="summarizer",
             routing_key="agents.summarizer.tasks",
@@ -339,6 +340,7 @@ class DelegationTarget(BaseModel):
             output_contract=SummaryOutput,
             timeout_seconds=120,
         )
+        ```
 
     .. note::
         Unlike the internal platform, this SDK does **not** assume any
@@ -394,12 +396,14 @@ class DelegationStep(BaseModel):
     on other steps. Used when dynamic targets are enabled.
 
     Example:
+        ```python
         step = DelegationStep(
             id="step_1",
             agent_name="web-search",
             input={"query": "Bitcoin price"},
             depends_on=[],
         )
+        ```
     """
 
     model_config = {"frozen": True}
@@ -445,6 +449,7 @@ class DelegationPlan(BaseModel):
     delegation node running in DAG mode with dynamic targets.
 
     Example:
+        ```python
         plan = DelegationPlan(
             steps=[
                 DelegationStep(id="s1", agent_name="search", input={"q": "A"}),
@@ -452,6 +457,7 @@ class DelegationPlan(BaseModel):
                 DelegationStep(id="s3", agent_name="synthesizer", input={}, depends_on=["s1", "s2"]),
             ]
         )
+        ```
     """
 
     model_config = {"frozen": True}

@@ -50,10 +50,12 @@ class BaseNode(ABC):
         - FunctionNode: Nodes that execute deterministic Python logic.
 
     Example:
+        ```python
         class MyCustomNode(BaseNode):
             async def _run(self, input_data: dict, context: dict | None = None) -> dict:
                 # Custom logic here
                 return {"result": "processed"}
+        ```
     """
 
     def __init__(

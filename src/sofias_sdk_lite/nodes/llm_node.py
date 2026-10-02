@@ -133,6 +133,7 @@ class LLMNode(BaseNode):
     result.
 
     Example:
+        ```python
         node = LLMNode(
             config=node_config,
             contract=NodeContract(input_schema=MyInput, output_schema=MyOutput),
@@ -140,6 +141,7 @@ class LLMNode(BaseNode):
             tools=[tool1, tool2],
         )
         result = await node.execute({"query": "Hello"})
+        ```
     """
 
     def __init__(

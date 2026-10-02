@@ -4,7 +4,8 @@ Middleware hooks are called before and after each node execution,
 allowing logging, metrics, tracing, and input/output transformation
 without modifying node code.
 
-Example::
+Example:
+    ```python
 
     class MetricsMiddleware:
         async def before_node(self, node_name, input_data):
@@ -24,6 +25,7 @@ Example::
         .with_middleware(MetricsMiddleware())
         .build()
     )
+    ```
 """
 
 from __future__ import annotations

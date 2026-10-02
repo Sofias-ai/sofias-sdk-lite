@@ -157,6 +157,7 @@ class LLMNodeConfig(BaseModel):
     are optional and default to None, meaning "inherit from parent level".
 
     Example:
+        ```python
         config = LLMNodeConfig(
             name="classifier",
             description="Classifies incoming emails",
@@ -168,6 +169,7 @@ class LLMNodeConfig(BaseModel):
                 template_variables={"categories": ["spam", "urgent", "normal"]},
             ),
         )
+        ```
     """
 
     model_config = ConfigDict(frozen=True)
@@ -256,11 +258,13 @@ class FunctionNodeConfig(BaseModel):
     without an LLM. No prompt, tool loop, or LLM settings are needed.
 
     Example:
+        ```python
         config = FunctionNodeConfig(
             name="data_merger",
             description="Merges outputs from multiple upstream nodes",
             retry_policy=RetryPolicy(max_retries=2),
         )
+        ```
     """
 
     model_config = ConfigDict(frozen=True)

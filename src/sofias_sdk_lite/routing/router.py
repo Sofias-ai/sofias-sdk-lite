@@ -31,6 +31,7 @@ class Router:
     graph. Execution is handled by the agent (Phase 5).
 
     Example:
+        ```python
         router = Router()
         router.add_route(
             "classifier",
@@ -47,6 +48,7 @@ class Router:
         # Later, during execution:
         next_node = router.resolve("classifier", {"category": "urgent"})
         # Returns "priority_handler"
+        ```
     """
 
     def __init__(self) -> None:

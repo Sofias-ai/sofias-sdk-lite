@@ -19,6 +19,7 @@ class AggregatorNodeConfig(BaseModel):
     to a configurable policy (all, any, majority).
 
     Example:
+        ```python
         config = AggregatorNodeConfig(
             name="collect_results",
             description="Collects responses from all sub-agents",
@@ -26,6 +27,7 @@ class AggregatorNodeConfig(BaseModel):
             timeout_seconds=120.0,
             on_timeout="partial_result",
         )
+        ```
     """
 
     model_config = ConfigDict(frozen=True)

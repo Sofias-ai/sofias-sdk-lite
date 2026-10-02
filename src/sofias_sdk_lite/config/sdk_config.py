@@ -73,10 +73,12 @@ class SDKConfig(BaseModel):
     when setting up their agent. All values have sensible defaults.
 
     Example:
+        ```python
         config = SDKConfig(
             llm=LLMConfig(model="gpt-4o-mini"),
             strict_validation=True,
         )
+        ```
     """
 
     model_config = ConfigDict(frozen=True)

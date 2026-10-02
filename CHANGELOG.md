@@ -4,6 +4,22 @@ All notable changes to `sofias-sdk-lite` are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). While the
 version is below 1.0, a minor release (0.x.0) may contain breaking changes.
 
+## [0.2.1] - 2026-10-02
+
+### Fixed
+
+- API reference: docstring examples are now rendered as code. Their comment
+  lines were being read as headings, which polluted the page menu.
+- The `Agent` example called `add_node`, which does not exist; it now uses
+  `add_llm_node`.
+- `create_llm()` raises the missing-URL `LLMConfigurationError` before logging
+  the "no API key" warning, so a misconfigured agent reports one clear problem.
+
+### Changed
+
+- Documentation: the reference menu lists sections and classes only, with
+  short names; private and dunder members are no longer listed.
+
 ## [0.2.0] - 2026-09-30
 
 ### Changed (breaking)

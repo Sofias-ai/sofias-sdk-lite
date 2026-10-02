@@ -21,6 +21,7 @@ This module is transport-agnostic: it has no dependency on any specific
 message broker. Wire it to whatever transport your application uses.
 
 Example:
+    ```python
     class MyRabbitMQWorkflow:
         async def send_response(
             self,
@@ -38,6 +39,7 @@ Example:
         .with_response_workflow(MyRabbitMQWorkflow())
         .build()
     )
+    ```
 """
 
 from __future__ import annotations
@@ -99,6 +101,7 @@ class StreamingResponseWorkflow(Protocol):
     send_response() is still called at the end with the complete response.
 
     Example:
+        ```python
         class MySSEWorkflow:
             async def on_stream_event(
                 self,
@@ -113,6 +116,7 @@ class StreamingResponseWorkflow(Protocol):
                 context: ExecutionContext,
             ) -> None:
                 await self._sse_channel.send_final(response.model_dump_json())
+        ```
     """
 
     async def on_stream_event(
@@ -162,7 +166,8 @@ class BaseDelegationResponseWorkflow:
             the ``result`` string. If *None*, the entire content dict is
             serialized as JSON. Defaults to *None*.
 
-    Example::
+    Example:
+        ```python
 
         async def publish(payload: dict) -> None:
             await my_transport.publish_reply(reply_to, correlation_id, payload)
@@ -171,6 +176,7 @@ class BaseDelegationResponseWorkflow:
             publish_fn=publish,
             output_field="report",
         )
+        ```
     """
 
     def __init__(

@@ -134,6 +134,7 @@ class EventAdapter:
     - Error handling and logging
 
     Example:
+        ```python
         publisher = RabbitMQPublisher(connection)
         listener = RabbitMQListener(connection)
         events = EventAdapter(publisher, listener)
@@ -151,6 +152,7 @@ class EventAdapter:
             agent_name="inbox_assist",
             handler=my_handler,
         )
+        ```
     """
 
     def __init__(

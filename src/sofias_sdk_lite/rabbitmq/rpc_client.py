@@ -38,6 +38,7 @@ class RabbitMQRPCClient:
     3. Waits for responses matching the correlation_id
 
     Example:
+        ```python
         client = RabbitMQClient(config)
         await client.connect()
 
@@ -49,6 +50,7 @@ class RabbitMQRPCClient:
             )
 
         await client.disconnect()
+        ```
     """
 
     def __init__(

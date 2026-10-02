@@ -4,7 +4,8 @@ Subclass and implement:
 - build_agent(settings, workflow) -> Agent
 - prepare_input(task, history, role) -> AgentMessage
 
-Example::
+Example:
+    ```python
 
     class MyAgentRunner(AgentRunner):
         settings_class = MySettings
@@ -30,6 +31,7 @@ Example::
             agent_name="my_agent",
             rabbitmq=RabbitMQConfig(host="localhost"),
         )).run()
+    ```
 """
 
 from __future__ import annotations

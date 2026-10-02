@@ -38,11 +38,13 @@ class AgentSettings(BaseModel):
     required and optional runtime configuration variables.
 
     Example:
+        ```python
         class MyAgentSettings(AgentSettings):
             reasoning_model: str              # required
             fast_model: str                   # required
             max_retries: int = 3              # optional with default
             temperature: float = 0.7          # optional with default
+        ```
     """
 
     model_config = ConfigDict(
@@ -85,6 +87,7 @@ class SettingsResolver(Generic[SettingsT]):
     graph execution without explicit parameter passing.
 
     Example:
+        ```python
         resolver = SettingsResolver(MyAgentSettings)
 
         # Resolve from incoming message
@@ -98,6 +101,7 @@ class SettingsResolver(Generic[SettingsT]):
 
         # Clear after execution
         resolver.clear()
+        ```
     """
 
     def __init__(self, settings_class: type[SettingsT]) -> None:

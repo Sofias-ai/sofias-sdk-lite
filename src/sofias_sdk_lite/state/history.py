@@ -114,9 +114,11 @@ class InMemoryHistory:
     (history is lost on process restart).
 
     Example:
+        ```python
         history = InMemoryHistory()
         await history.append("conv-1", Message(role="user", content="hi"))
         messages = await history.get("conv-1")  # [Message(role="user", ...)]
+        ```
     """
 
     def __init__(self) -> None:

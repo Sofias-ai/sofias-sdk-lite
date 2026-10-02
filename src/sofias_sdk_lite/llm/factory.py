@@ -232,6 +232,14 @@ def create_llm(
             "reasoning_effort": reasoning_effort,
         },
     )
+    if not config.base_url.strip():
+        raise LLMConfigurationError(
+            f"No LLM gateway URL configured for model '{config.model}'. On the Sofias "
+            f"platform {ENV_LLM_BASE_URL} is injected automatically; to run locally, "
+            "export it or install a fake LLM with default_llm(...).",
+            missing=["base_url"],
+        )
+
     if not config.api_key.get_secret_value():
         logger.warning(
             "LLM gateway configured without an API key; requests will be unauthenticated",
@@ -250,14 +258,6 @@ def create_llm(
     }
     if config.temperature is not None:
         common["temperature"] = config.temperature
-
-    if not config.base_url.strip():
-        raise LLMConfigurationError(
-            f"No LLM gateway URL configured for model '{config.model}'. On the Sofias "
-            f"platform {ENV_LLM_BASE_URL} is injected automatically; to run locally, "
-            "export it or install a fake LLM with default_llm(...).",
-            missing=["base_url"],
-        )
 
     provider_name = config.provider.lower()
     if provider_name == PROVIDER_GATEWAY:

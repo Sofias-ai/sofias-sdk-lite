@@ -53,6 +53,7 @@ class AggregatorNode(BaseNode):
     controlled by retry_timeout_seconds (or timeout_seconds if not set).
 
     Example:
+        ```python
         config = AggregatorNodeConfig(
             name="collect_results",
             resolution_policy="all",
@@ -73,6 +74,7 @@ class AggregatorNode(BaseNode):
         #     "total_expected": 2,
         #     "total_received": 2,
         # }
+        ```
     """
 
     def __init__(

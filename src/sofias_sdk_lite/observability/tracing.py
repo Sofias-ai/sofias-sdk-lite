@@ -215,6 +215,7 @@ class TracingAdapter:
     - No-op behavior when provider is None
 
     Example:
+        ```python
         provider = OTelTracingProvider("my-agent-service")
         tracing = TracingAdapter(provider)
 
@@ -226,6 +227,7 @@ class TracingAdapter:
         # Trace node execution
         with tracing.trace_node_execution("classifier", input_data) as span:
             result = await node.execute(input_data)
+        ```
     """
 
     def __init__(self, provider: TracingProvider | None = None) -> None:
@@ -298,9 +300,11 @@ class TracingAdapter:
             The span for adding events and attributes.
 
         Example:
+            ```python
             with tracing.trace_agent_execution("my_agent", "1.0.0") as span:
                 span.set_attribute("input.type", "email")
                 response = agent.execute(message)
+            ```
         """
         attributes = {
             "agent.name": agent_name,

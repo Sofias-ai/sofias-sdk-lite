@@ -55,12 +55,13 @@ class BaseAgentSettings(AgentSettings):
     variables), so a ``{api_key}`` placeholder can never inline a secret. Read
     them at the point of use with ``.get_secret_value()``.
 
-    Example::
-
+    Example:
+        ```python
         class MySettings(BaseAgentSettings):
             CREDENTIAL_FIELDS = BaseAgentSettings.CREDENTIAL_FIELDS | {"search_api_key"}
 
             search_api_key: SecretStr = SecretStr("")
+        ```
     """
 
     # --- LLM gateway (canonical platform keys) ---

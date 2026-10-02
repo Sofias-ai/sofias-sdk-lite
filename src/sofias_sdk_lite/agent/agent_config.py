@@ -47,6 +47,7 @@ class AgentConfig(BaseModel):
     three-level configuration resolution: SDK > Agent > Node.
 
     Example:
+        ```python
         config = AgentConfig(
             name="inbox-assistant",
             version="1.0.0",
@@ -56,6 +57,7 @@ class AgentConfig(BaseModel):
             settings_class=InboxAssistantSettings,
             llm=AgentLLMConfig(model="gpt-4o"),
         )
+        ```
     """
 
     model_config = ConfigDict(frozen=True, arbitrary_types_allowed=True)

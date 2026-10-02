@@ -38,6 +38,7 @@ class PlannerNode(BaseNode):
     routes the output to PlanExecutor for execution.
 
     Example:
+        ```python
         planner = PlannerNode(
             name="planner",
             contract=planner_contract,
@@ -47,6 +48,7 @@ class PlannerNode(BaseNode):
                 NodeDescriptor(name="summarize", node_type=NodeType.LLM, description="Summarize text"),
             ],
         )
+        ```
     """
 
     def __init__(

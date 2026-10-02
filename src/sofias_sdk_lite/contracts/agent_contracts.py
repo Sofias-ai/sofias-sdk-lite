@@ -8,6 +8,7 @@ strongly-typed envelopes that carry domain data plus transport metadata.
 - AgentResponse wraps the validated output with execution metadata.
 
 Example:
+    ```python
     class MyInput(InputContract):
         query: str
 
@@ -22,6 +23,7 @@ Example:
     print(response.content)           # validated output dict
     print(response.execution_path)    # ["classifier", "responder"]
     print(response.execution_time_ms) # 1234.5
+    ```
 """
 
 from __future__ import annotations

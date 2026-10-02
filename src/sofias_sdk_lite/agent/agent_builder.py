@@ -64,6 +64,7 @@ class AgentBuilder:
     time, catching configuration errors before runtime.
 
     Example:
+        ```python
         agent = (
             AgentBuilder("inbox_assist", version="1.0.0")
             .with_description("Agent that processes incoming emails")
@@ -84,6 +85,7 @@ class AgentBuilder:
             .with_circuit_breaker(CircuitBreakerConfig(failure_threshold=5))
             .build()
         )
+        ```
     """
 
     def __init__(self, name: str, *, version: str = "1.0.0") -> None:
@@ -408,6 +410,7 @@ class AgentBuilder:
             Self for method chaining.
 
         Example:
+            ```python
             builder.with_delegation_transport(my_transport).add_delegation_node(
                 name="delegate_analysis",
                 config=DelegationNodeConfig(
@@ -424,6 +427,7 @@ class AgentBuilder:
                     "transform_for_analyzer": lambda d: {"text": d["content"]},
                 },
             )
+            ```
         """
         self._delegation_node_configs[name] = config
         self._delegation_node_contracts[name] = contract
@@ -709,6 +713,7 @@ class AgentBuilder:
             Self for method chaining.
 
         Example:
+            ```python
             from sofias_sdk_lite.state import (
                 ConversationState,
                 InMemoryStateProvider,
@@ -717,6 +722,7 @@ class AgentBuilder:
             builder.with_conversation_state(
                 ConversationState(InMemoryStateProvider())
             )
+            ```
         """
         self._conversation_state = state
         return self

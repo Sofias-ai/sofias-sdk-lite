@@ -35,11 +35,13 @@ class ConfigSource(Protocol):
     return type.
 
     Example:
+        ```python
         class DatabaseConfigSource:
             async def fetch(
                 self, agent_name: str, conversation_id: str | None = None
             ) -> dict[str, Any]:
                 return await my_db.get_agent_config(agent_name)
+        ```
     """
 
     async def fetch(self, agent_name: str, conversation_id: str | None = None) -> dict[str, Any]:
@@ -66,8 +68,10 @@ class StaticConfigSource:
     fixed configuration applies to every agent and conversation.
 
     Example:
+        ```python
         source = StaticConfigSource({"model_name": "gpt-4o-mini", "api_key": "..."})
         config = await source.fetch("my_agent")
+        ```
     """
 
     def __init__(self, config: dict[str, Any]) -> None:
@@ -104,8 +108,10 @@ class EnvConfigSource:
         export SOFIAS_AGENT_CONFIG='{"model_name": "gpt-4o-mini", "api_key": "sk-..."}'
 
     Example:
+        ```python
         source = EnvConfigSource()  # reads SOFIAS_AGENT_CONFIG
         config = await source.fetch("my_agent")
+        ```
     """
 
     def __init__(self, env_var: str = "SOFIAS_AGENT_CONFIG") -> None:

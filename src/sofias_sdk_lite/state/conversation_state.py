@@ -105,12 +105,14 @@ class ConversationStateAdapter:
     (``raise_on_error=False``).
 
     Example:
+        ```python
         provider = InMemoryStateProvider()
         state = ConversationStateAdapter(provider)
 
         await state.set("conv-123", "validation:doc1", {"questions": [...]})
         data = await state.get("conv-123", "validation:doc1")
         await state.delete("conv-123", "validation:doc1")
+        ```
     """
 
     def __init__(
@@ -221,11 +223,13 @@ class InMemoryStateProvider:
     (state is lost on process restart).
 
     Example:
+        ```python
         provider = InMemoryStateProvider()
         await provider.set("conv-1", "key-a", {"foo": "bar"})
         data = await provider.get("conv-1", "key-a")  # {"foo": "bar"}
         await provider.delete("conv-1", "key-a")
         data = await provider.get("conv-1", "key-a")  # None
+        ```
     """
 
     def __init__(self) -> None:

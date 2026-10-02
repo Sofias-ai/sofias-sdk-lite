@@ -6,6 +6,7 @@ a common protocol so that any delegating node knows exactly what to send and
 what to expect back, without needing to know the internals of the target agent.
 
 Example:
+    ```python
     # Agent A delegates to Agent B
     request = DelegationRequest(
         input="Summarize this document",
@@ -18,6 +19,7 @@ Example:
         result="The document discusses...",
         extras={"word_count": 150, "confidence": 0.95},
     )
+    ```
 """
 
 from __future__ import annotations

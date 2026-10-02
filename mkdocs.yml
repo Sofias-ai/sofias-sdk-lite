@@ -48,6 +48,10 @@ extra_css:
   - stylesheets/sofias.css
 
 markdown_extensions:
+  # Right-hand menu: sections and classes only. Methods stay on the page but
+  # listing every one of them made the reference menu unusable.
+  - toc:
+      toc_depth: 3
   - admonition
   - pymdownx.superfences
   - pymdownx.highlight
@@ -63,3 +67,8 @@ plugins:
           options:
             show_source: false
             show_root_heading: true
+            # Classes nest under the H2 section headings of reference.md.
+            heading_level: 3
+            show_root_full_path: false
+            merge_init_into_class: true
+            filters: ["!^_"]

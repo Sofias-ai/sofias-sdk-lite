@@ -67,12 +67,13 @@ class Agent:
     to Node instances which handle their own execution.
 
     Example:
+        ```python
         # Agent is typically built via AgentBuilder
         agent = (
             AgentBuilder("my_agent", version="1.0.0")
             .with_settings_class(MySettings)
             .with_contract(input_schema=MyInput, output_schema=MyOutput)
-            .add_node("start", node_config, contract)
+            .add_llm_node("start", node_config, contract)
             .set_entry_node("start")
             .set_terminal("start")
             .build()
@@ -86,6 +87,7 @@ class Agent:
             )
         )
         assert response.status == ResponseStatus.SUCCESS
+        ```
     """
 
     def __init__(
