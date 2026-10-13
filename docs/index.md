@@ -19,6 +19,10 @@ Build multi-node agents on a declarative graph and run them against RabbitMQ.
   builds the client when you need it explicitly; `LLMCallable` stays a protocol
   for anything the bundled clients do not cover — see
   [LLM integration](concepts/llm-integration.md).
+- **The user's connectors** — `McpToolProvider` turns the connectors the
+  platform sends with each turn (mail, documents, CRM, the company's own MCP
+  servers…) into tools, through the platform's intermediary: your agent never
+  sees a credential — see [Using the user's connectors](guides/connectors.md).
 
 Nothing in this package depends on a private backend or an internal config
 service. Where the model lives is deployment configuration, not agent code.

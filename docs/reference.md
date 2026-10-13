@@ -77,3 +77,8 @@ this page is for looking up exact signatures.
 ::: sofias_sdk_lite.LLMConfigurationError
 ::: sofias_sdk_lite.LLMRequestError
 ::: sofias_sdk_lite.EmptyLLMResponseError
+
+## MCP connectors
+
+::: sofias_sdk_lite.mcp.McpToolProvider
+::: sofias_sdk_lite.mcp.McpError

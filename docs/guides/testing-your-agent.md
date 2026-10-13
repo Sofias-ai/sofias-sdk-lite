@@ -78,3 +78,10 @@ The runner's `_handle_message()` is exercised indirectly by feeding it a
 `prepare_input()` directly (they're plain methods, not tied to RabbitMQ) and
 rely on integration tests against a local broker (see
 `examples/docker-compose.yml`) for the wiring itself.
+
+## Testing with real connectors
+
+To try your agent with real connectors (MCP) before publishing it, use the
+developer portal sandbox: it gives your agent the connectors you choose, through
+the platform's intermediary and without your credentials. The steps are in
+[Using the user's connectors](connectors.md#testing-with-connectors-in-the-developer-portal).

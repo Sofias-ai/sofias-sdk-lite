@@ -20,6 +20,11 @@ Build multi-node agents on a declarative graph and run them against RabbitMQ.
   from the agent's settings or the `SOFIAS_LLM_*` environment. `create_llm()`
   builds the client when you need it explicitly; `LLMCallable` stays a protocol
   for anything the bundled clients do not cover.
+- **The user's connectors** — `McpToolProvider` turns the connectors the platform
+  sends with each turn (mail, documents, CRM, the company's own MCP servers…)
+  into tools for your LLM nodes. They go through the platform's intermediary:
+  your agent never sees a credential. See
+  [Using the user's connectors](https://docs.sofias.ai/guides/connectors/).
 
 Nothing here depends on a private backend or an internal config service.
 Where the model lives is deployment configuration, not agent code.
@@ -173,11 +178,11 @@ if __name__ == "__main__":
 
 ## Scope (v1)
 
-Core agent graph, RabbitMQ messaging, the runner, and LLM clients for the
-Sofias gateway / any OpenAI-compatible endpoint ship today. Memory and MCP
-tool discovery are intentionally out of scope for v1 — the SDK ships the
-relevant protocols (`MemoryProvider`, `ToolProvider`) so you can plug in
-your own, and these become optional extras in a later release.
+Core agent graph, RabbitMQ messaging, the runner, LLM clients for the Sofias
+gateway / any OpenAI-compatible endpoint and, since 0.3.0, the user's
+connectors (MCP) ship today. Memory is intentionally out of scope for v1 — the
+SDK ships the `MemoryProvider` protocol so you can plug in your own, and it
+becomes an optional extra in a later release.
 
 ## Source and contributions
 

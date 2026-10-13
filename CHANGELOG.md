@@ -4,6 +4,19 @@ All notable changes to `sofias-sdk-lite` are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). While the
 version is below 1.0, a minor release (0.x.0) may contain breaking changes.
 
+## [Unreleased]
+
+## [0.3.0] - 2026-10-13
+
+### Added
+
+- `sofias_sdk_lite.mcp.McpToolProvider`: uses the connectors the platform sends
+  in `mcp_servers` (through its MCP intermediary, with a short-lived grant)
+  as tools for an `LLMNode`. Minimal Streamable HTTP client, no new dependency.
+  When a tool returns structured data (`structuredContent`), the model gets it
+  behind a short text summary.
+- Guide: "Using the user's connectors" in the documentation.
+
 ## [0.2.1] - 2026-10-02
 
 ### Fixed

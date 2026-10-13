@@ -42,6 +42,7 @@ nav:
       - Delegation: messaging/delegation.md
   - Guides:
       - Testing your agent: guides/testing-your-agent.md
+      - Using the user's connectors: guides/connectors.md
   - Reference: reference.md
 
 extra_css:
