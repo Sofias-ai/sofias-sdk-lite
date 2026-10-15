@@ -43,6 +43,7 @@ nav:
   - Guides:
       - Testing your agent: guides/testing-your-agent.md
       - Using the user's connectors: guides/connectors.md
+      - Files and images: guides/files.md
   - Reference: reference.md
 
 extra_css:

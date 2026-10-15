@@ -37,6 +37,7 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 import nh3
 
 from sofias_sdk_lite.contracts.strict_contract import StrictContract
+from sofias_sdk_lite.files import Attachment, FileAccess
 from sofias_sdk_lite.observability._log import get_logger
 
 logger = get_logger("messaging.models")
@@ -104,6 +105,15 @@ class _BaseTaskMessage(BaseModel):
     # --- Agent ecosystem ---
     available_agents: dict[str, Any] | list[str] = {}
     agent_internal_capabilities: str | None = None
+
+    # --- Files (0.4.0) ---
+    # What the user attached: download URLs, and their details. For third-party
+    # agents both point at the platform's intermediary, with the turn's grant.
+    attachments: list[str] = []
+    attachment_details: list[Attachment] = []
+    # Where to download from and upload to with the turn's grant (``None`` when
+    # the platform sends no intermediary, e.g. a local run). See ``sofias_sdk_lite.files``.
+    files: FileAccess | None = None
 
     # --- Delegation (optional) ---
     reply_to: str | None = None

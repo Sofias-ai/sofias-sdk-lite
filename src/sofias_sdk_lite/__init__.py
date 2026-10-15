@@ -103,6 +103,12 @@ from sofias_sdk_lite.llm import (
     ToolCall,
     ToolSpec,
 )
+from sofias_sdk_lite.files import (
+    Attachment,
+    FileAccess,
+    FileAccessError,
+    ReturnedFile,
+)
 from sofias_sdk_lite.messaging import (
     AgentTaskMessage,
     ApiTaskMessage,
@@ -171,6 +177,11 @@ except PackageNotFoundError:  # pragma: no cover - source checkout without insta
 
 __all__ = [
     "__version__",
+    # Files (0.4.0)
+    "Attachment",
+    "FileAccess",
+    "FileAccessError",
+    "ReturnedFile",
     # Agent
     "Agent",
     "AgentBuilder",

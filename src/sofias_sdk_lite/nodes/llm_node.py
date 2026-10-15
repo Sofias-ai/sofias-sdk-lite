@@ -48,6 +48,7 @@ from sofias_sdk_lite.llm import (
 )
 from sofias_sdk_lite.nodes.base_node import BaseNode, NodeType
 from sofias_sdk_lite.nodes.prompt_assembler import PromptAssembler
+from sofias_sdk_lite.observability.tool_events import emit_tool_call
 from sofias_sdk_lite.observability._log import get_logger
 
 if TYPE_CHECKING:
@@ -727,7 +728,11 @@ class LLMNode(BaseNode):
         )
 
     async def _execute_tool(self, tool_call: ToolCall) -> ToolResult:
-        """Execute a single tool call.
+        """Execute a single tool call and leave its event line (``emit_tool_call``).
+
+        Both paths -- streaming and not -- and both kinds of tool -- your own
+        and the connectors' -- come through here, so this is the one place the
+        sandbox logs learn which tools ran.
 
         Args:
             tool_call: The tool call to execute.
@@ -735,6 +740,20 @@ class LLMNode(BaseNode):
         Returns:
             ToolResult with success/failure and output/error.
         """
+        started = time.perf_counter()
+        result = await self._run_tool(tool_call)
+        known = tool_call.name in self._tools_by_name or self._tool_registry is not None
+        emit_tool_call(
+            tool_call.name,
+            ok=result.success,
+            duration_ms=(time.perf_counter() - started) * 1000,
+            node_name=self.name,
+            error_type=None if result.success else ("failed" if known else "not_found"),
+        )
+        return result
+
+    async def _run_tool(self, tool_call: ToolCall) -> ToolResult:
+        """Execute a single tool call (see ``_execute_tool``)."""
         tool_start = time.perf_counter()
         tool = self._tools_by_name.get(tool_call.name)
         if tool is None:

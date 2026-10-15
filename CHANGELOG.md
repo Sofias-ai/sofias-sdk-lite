@@ -6,6 +6,23 @@ version is below 1.0, a minor release (0.x.0) may contain breaking changes.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-15
+
+### Added
+
+- Files for third-party agents (`sofias_sdk_lite.files`): `AgentTaskMessage`
+  now carries `attachment_details` (as `Attachment`) and `files`, a
+  `FileAccess` with the turn's grant. `download` / `adownload` read an
+  attachment, `upload` / `aupload` store a file you return, and
+  `ReturnedFile.artifact()` gives the tag that hands it to the user. Everything
+  goes through the platform's intermediary: no storage keys, no permanent links.
+- `FileAccess.image_part`: an OpenAI-compatible image content part for a vision
+  model.
+- One `SOFIAS_EVENT` line on standard output per tool call (yours or a
+  connector's), with names, timings and outcome only, for the portal's sandbox
+  logs. `SOFIAS_EVENTS=off` silences them.
+- Guide: "Files and images" in the documentation.
+
 ## [0.3.0] - 2026-10-13
 
 ### Added
